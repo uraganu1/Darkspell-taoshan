@@ -19,10 +19,10 @@
 export CROSS_COMPILE="/home/pulshen/Git/toolchain/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-"
 STRIP="/home/pulshen/Git/toolchain/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-strip"
 MODULES_DIR="modules_dir"
-ZIMAGE="/home/pulshen/Git/thunderzap_xl/arch/arm/boot/zImage"
-KERNEL_DIR="/home/pulshen/Git/thunderzap_xl/"
-MKBOOTIMG="/home/pulshen/Git/thunderzap_xl/tools/mkbootimg"
-MKBOOTFS="/home/pulshen/Git/thunderzap_xl/tools/mkbootfs"
+ZIMAGE="/home/pulshen/Git/XKernel/arch/arm/boot/zImage"
+KERNEL_DIR="/home/pulshen/Git/XKernel/"
+MKBOOTIMG="/home/pulshen/Git/XKernel/tools/mkbootimg"
+MKBOOTFS="/home/pulshen/Git/XKernel/tools/mkbootfs"
 BUILD_START=$(date +"%s")
 export ARCH=arm
 export SUBARCH=arm
