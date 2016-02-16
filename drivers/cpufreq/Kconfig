@@ -124,6 +124,12 @@ config CPU_FREQ_DEFAULT_GOV_SMARTMAX
         help
           Use the CPUFreq governor 'smartmax' as default
 
+config CPU_FREQ_DEFAULT_GOV_SMARTX
+        bool "smartx"
+        select CPU_FREQ_GOV_SMARTX
+        help
+          Use the CPUFreq governor 'smartX' as default
+          
 config CPU_FREQ_DEFAULT_GOV_INTELLIMM
         bool "intelliminmax"
         select CPU_FREQ_GOV_INTELLIMM
@@ -213,6 +219,14 @@ config CPU_FREQ_GOV_SMARTASS2
 	  'smartassV2' - a "smart" optimized governor!
 
 	   If in doubt, say N.
+	   
+config CPU_FREQ_GOV_LULZACTIVE
+	tristate "'lulzactive' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'lulzactive' - a new interactive governor by Tegrak!
+	  For more information please visit:
+	  http://tegrak2x.blogspot.com/2011/11/lulzactive-governor-v2.html
 
 config CPU_FREQ_GOV_CONSERVATIVE
 	tristate "'conservative' cpufreq governor"
@@ -259,6 +273,12 @@ config CPU_FREQ_GOV_SMARTMAX
         select CPU_FREQ_TABLE
         help
           'smartmax' combined ondemand and smartass2
+          
+config CPU_FREQ_GOV_SMARTX
+        tristate "'smartx' cpufreq policy governor"
+        select CPU_FREQ_TABLE
+        help
+          'smartX' preconfigured smartmax governor
 
 config CPU_FREQ_GOV_INTELLIMM
         tristate "'intelliminmax' cpufreq policy governor"
