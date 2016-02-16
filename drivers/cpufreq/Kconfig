@@ -219,14 +219,6 @@ config CPU_FREQ_GOV_SMARTASS2
 	  'smartassV2' - a "smart" optimized governor!
 
 	   If in doubt, say N.
-	   
-config CPU_FREQ_GOV_LULZACTIVE
-	tristate "'lulzactive' cpufreq governor"
-	depends on CPU_FREQ
-	help
-	  'lulzactive' - a new interactive governor by Tegrak!
-	  For more information please visit:
-	  http://tegrak2x.blogspot.com/2011/11/lulzactive-governor-v2.html
 
 config CPU_FREQ_GOV_CONSERVATIVE
 	tristate "'conservative' cpufreq governor"
