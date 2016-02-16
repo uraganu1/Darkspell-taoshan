@@ -123,12 +123,6 @@ config CPU_FREQ_DEFAULT_GOV_SMARTMAX
         select CPU_FREQ_GOV_SMARTMAX
         help
           Use the CPUFreq governor 'smartmax' as default
-
-config CPU_FREQ_DEFAULT_GOV_SMARTX
-        bool "smartx"
-        select CPU_FREQ_GOV_SMARTX
-        help
-          Use the CPUFreq governor 'smartX' as default
           
 config CPU_FREQ_DEFAULT_GOV_INTELLIMM
         bool "intelliminmax"
@@ -265,12 +259,6 @@ config CPU_FREQ_GOV_SMARTMAX
         select CPU_FREQ_TABLE
         help
           'smartmax' combined ondemand and smartass2
-          
-config CPU_FREQ_GOV_SMARTX
-        tristate "'smartx' cpufreq policy governor"
-        select CPU_FREQ_TABLE
-        help
-          'smartX' preconfigured smartmax governor
 
 config CPU_FREQ_GOV_INTELLIMM
         tristate "'intelliminmax' cpufreq policy governor"
