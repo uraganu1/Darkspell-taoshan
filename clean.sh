@@ -3,3 +3,4 @@ make ARCH=arm CROSS_COMPILE="/home/kitt/Git/toolchains/4.8.3-2013.11.20131205/bi
 rm -rf $KERNEL_DIR/ramdisk.cpio
 rm -rf $KERNEL_DIR/root.fs
 rm -rf $KERNEL_DIR/boot.img
+rm -rf XKernel-Flasher
