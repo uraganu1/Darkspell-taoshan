@@ -1,5 +1,5 @@
  #
- # Copyright © 2014, Varun Chitre "varun.chitre15" <varun.chitre15@gmail.com>
+ # Copyright ï¿½ 2014, Varun Chitre "varun.chitre15" <varun.chitre15@gmail.com>
  #
  # Custom build script
  #
@@ -16,13 +16,13 @@
 #!/bin/bash
 # export CROSS_COMPILE="/root/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-"
 # export CROSS_COMPILE="/root/cm11/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7/bin/arm-eabi-"
-export CROSS_COMPILE="/home/pulshen/Git/toolchain/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-"
-STRIP="/home/pulshen/Git/toolchain/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-strip"
+export CROSS_COMPILE="/home/kitt/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-"
+STRIP="/home/kitt/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-strip"
 MODULES_DIR="modules_dir"
-ZIMAGE="/home/pulshen/Git/XKernel/arch/arm/boot/zImage"
-KERNEL_DIR="/home/pulshen/Git/XKernel/"
-MKBOOTIMG="/home/pulshen/Git/XKernel/tools/mkbootimg"
-MKBOOTFS="/home/pulshen/Git/XKernel/tools/mkbootfs"
+ZIMAGE="/home/kitt/Git/XKernel/arch/arm/boot/zImage"
+KERNEL_DIR="/home/kitt/Git/XKernel/"
+MKBOOTIMG="/home/kittGit/XKernel/tools/mkbootimg"
+MKBOOTFS="/home/kitt/Git/XKernel/tools/mkbootfs"
 BUILD_START=$(date +"%s")
 export ARCH=arm
 export SUBARCH=arm
