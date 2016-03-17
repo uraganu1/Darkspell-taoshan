@@ -1,0 +1,38 @@
+#!/bin/bash
+rm -rf XKernel-Flasher
+git clone https://github.com/Sudokamikaze/XKernel-Flasher.git && cd XKernel-Flasher
+echo Welcome to XKernel flash zip creator
+echo =======================================
+echo 1 Default flash configuration
+echo 2 Tunned for battery and performance
+echo 3 Extra performance
+echo ========================================
+echo -n "Choose an action: "
+read item
+case "$item" in
+  1) echo "Creating default flash zip"
+  cp ../arch/arm/boot/zImage tools/
+  cp scripts/updater-script-default META-INF/com/google/android/
+  mv META-INF/com/google/android/updater-script-default META-INF/com/google/android/updater-script
+  zip XKernel-Flasher.zip -r META-INF presets system tools
+  ;;
+  2) echo "Creating tunned zip"
+  cp ../arch/arm/boot/zImage tools/
+  cp scripts/updater-script-balanced META-INF/com/google/android/
+  mv META-INF/com/google/android/updater-script-balanced META-INF/com/google/android/updater-script
+  zip XKernel-Flasher.zip -r META-INF presets system tools
+  ;;
+  3) echo "Creating zip with configured to extra performance"
+  cp ../arch/arm/boot/zImage tools/
+  cp scripts/updater-script-performance META-INF/com/google/android/
+  mv META-INF/com/google/android/updater-script-performance META-INF/com/google/android/updater-script
+  zip XKernel-Flasher.zip -r META-INF presets system tools
+  ;;
+  *) echo "Waiting for input"
+  ;;
+esac
+mv XKernel-Flasher.zip signer/
+echo Signing zip file
+cd signer && java -jar signapk.jar testkey.x509.pem testkey.pk8 XKernel-Flasher.zip XKernel-Flasher-signed.zip
+rm XKernel-Flasher.zip
+mv XKernel-Flasher-signed.zip ../
