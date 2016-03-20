@@ -84,5 +84,5 @@ GTAGS
 *.orig
 *~
 \#*#
-XKernel-Flasher
-modules_dir
+/XKernel-Flasher
+/modules_dir
