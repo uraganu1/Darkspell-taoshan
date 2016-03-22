@@ -1,6 +1,8 @@
 #!/bin/bash
 rm -rf XKernel-Flasher
 git clone https://github.com/Sudokamikaze/XKernel-Flasher.git && cd XKernel-Flasher
+cp ../arch/arm/boot/zImage tools/
+cp ../XKernel/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
 echo Welcome to XKernel flash zip creator
 echo =======================================
 echo 1 Default flash configuration
@@ -11,19 +13,16 @@ echo -n "Choose an action: "
 read item
 case "$item" in
   1) echo "Creating default flash zip"
-  cp ../arch/arm/boot/zImage tools/
   cp scripts/updater-script-default META-INF/com/google/android/
   mv META-INF/com/google/android/updater-script-default META-INF/com/google/android/updater-script
   zip XKernel-Flasher.zip -r META-INF presets system tools
   ;;
   2) echo "Creating tunned zip"
-  cp ../arch/arm/boot/zImage tools/
   cp scripts/updater-script-balanced META-INF/com/google/android/
   mv META-INF/com/google/android/updater-script-balanced META-INF/com/google/android/updater-script
   zip XKernel-Flasher.zip -r META-INF presets system tools
   ;;
   3) echo "Creating zip with configured to extra performance"
-  cp ../arch/arm/boot/zImage tools/
   cp scripts/updater-script-performance META-INF/com/google/android/
   mv META-INF/com/google/android/updater-script-performance META-INF/com/google/android/updater-script
   zip XKernel-Flasher.zip -r META-INF presets system tools
