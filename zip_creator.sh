@@ -2,7 +2,7 @@
 rm -rf XKernel-Flasher
 git clone https://github.com/Sudokamikaze/XKernel-Flasher.git && cd XKernel-Flasher
 cp ../arch/arm/boot/zImage tools/
-cp ../XKernel/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
+cp ../drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
 echo Welcome to XKernel flash zip creator
 echo =======================================
 echo 1 Default flash configuration
