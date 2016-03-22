@@ -35,6 +35,10 @@
 #include "mdp.h"
 #include "mdp4.h"
 
+#ifdef CONFIG_TOUCHSCREEN_CYTTSP3_D2W
+#include <linux/cyttsp3_d2w.h>
+#endif
+
 u32 dsi_irq;
 u32 esc_byte_ratio;
 
@@ -137,6 +141,11 @@ static int mipi_dsi_off(struct platform_device *pdev)
 		mutex_unlock(&mfd->dma->ov_mutex);
 	else
 		up(&mfd->dma->mutex);
+
+#if defined(CONFIG_TOUCHSCREEN_CYTTSP3_D2W)
+	scr_suspended = true;
+	doubletap2wake_reset();
+#endif
 
 	pr_debug("%s-:\n", __func__);
 
@@ -328,6 +337,11 @@ static int mipi_dsi_on(struct platform_device *pdev)
 		mutex_unlock(&mfd->dma->ov_mutex);
 	else
 		up(&mfd->dma->mutex);
+
+#if defined(CONFIG_TOUCHSCREEN_CYTTSP3_D2W)
+	scr_suspended = false;
+	doubletap2wake_reset();
+#endif
 
 	pr_debug("%s-:\n", __func__);
 
