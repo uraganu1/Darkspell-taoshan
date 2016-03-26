@@ -18,11 +18,11 @@
 # export CROSS_COMPILE="/root/cm11/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7/bin/arm-eabi-"
 export CROSS_COMPILE="/home/kitt/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-"
 STRIP="/home/kitt/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-strip"
-MODULES_DIR="modules_dir"
-ZIMAGE="/home/kitt/Git/XKernel/arch/arm/boot/zImage"
-KERNEL_DIR="/home/kitt/Git/XKernel/"
-MKBOOTIMG="/home/kitt/Git/XKernel/tools/mkbootimg"
-MKBOOTFS="/home/kitt/Git/XKernel/tools/mkbootfs"
+MODULES_DIR="/home/kitt/Git/XKernel-taoshan/modules_dir"
+ZIMAGE="/home/kitt/Git/XKernel-taoshan/arch/arm/boot/zImage"
+KERNEL_DIR="/home/kitt/Git/XKernel-taoshan/"
+MKBOOTIMG="/home/kitt/Git/XKernel-taoshan/tools/mkbootimg"
+MKBOOTFS="/home/kitt/Git/XKernel-taoshan/tools/mkbootfs"
 BUILD_START=$(date +"%s")
 export ARCH=arm
 export SUBARCH=arm
