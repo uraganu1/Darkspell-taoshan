@@ -1,5 +1,5 @@
 # XKernel
-Thunderzap based kernel for Sony Xperia L(Taoshan)
+Thunderzap based kernel for Sony Xperia L(Taoshan) Only for Lollipop 5.1
 
 ### Features
 ZEN I/O
