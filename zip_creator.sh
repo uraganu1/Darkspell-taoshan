@@ -29,7 +29,7 @@ case "$item" in
   *) echo "Waiting for input"
   ;;
 esac
-echo Done flashing $CONFIG_LOCALVERSION >> META-INF/com/google/android/updater-script
+echo "ui_print("Done flashing $CONFIG_LOCALVERSION");" >> META-INF/com/google/android/updater-script
 zip XKernel-Rolling.zip -r META-INF presets system tools
 mv XKernel-Rolling.zip signer/
 echo Signing zip file
