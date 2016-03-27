@@ -3,12 +3,14 @@ rm -rf XKernel-Flasher
 git clone https://github.com/Sudokamikaze/XKernel-Flasher.git && cd XKernel-Flasher
 cp ../arch/arm/boot/zImage tools/
 cp ../drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
+eval $(grep CONFIG_LOCALVERSION= ../arch/arm/configs/pulshen_taoshan_defconfig)
 echo Welcome to XKernel flash zip creator
 echo =======================================
 echo 1 Default flash configuration
 echo 2 Tunned for battery and performance
 echo 3 Extra performance
 echo ========================================
+echo Current kernel version : $CONFIG_LOCALVERSION
 echo -n "Choose an action: "
 read item
 case "$item" in
@@ -27,6 +29,7 @@ case "$item" in
   *) echo "Waiting for input"
   ;;
 esac
+echo Done flashing $CONFIG_LOCALVERSION >> META-INF/com/google/android/updater-script
 zip XKernel-Rolling.zip -r META-INF presets system tools
 mv XKernel-Rolling.zip signer/
 echo Signing zip file
