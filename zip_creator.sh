@@ -29,12 +29,11 @@ case "$item" in
   *) echo "Waiting for input"
   ;;
 esac
-echo "ui_print("Done flashing $CONFIG_LOCALVERSION");" >> META-INF/com/google/android/updater-script
-zip XKernel-Rolling.zip -r META-INF presets system tools
-mv XKernel-Rolling.zip signer/
+zip XKernel-Stable.zip -r META-INF presets system tools
+mv XKernel-Stable.zip signer/
 echo Signing zip file
-cd signer && java -jar signapk.jar testkey.x509.pem testkey.pk8 XKernel-Rolling.zip XKernel-Rolling-signed.zip
+cd signer && java -jar signapk.jar testkey.x509.pem testkey.pk8 XKernel-Stable.zip XKernel-Stable-signed.zip
 echo Done!
 echo You may grab your zip file in XKernel-Flasher directory
-rm XKernel-Rolling.zip
-mv XKernel-Rolling-signed.zip ../
+rm XKernel-Stable.zip
+mv XKernel-Stable-signed.zip ../
