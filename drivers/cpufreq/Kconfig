@@ -137,6 +137,12 @@ config CPU_FREQ_DEFAULT_GOV_INTELLIMM
           Use the CPUFreq governor 'intelliminmax' as default. This is
           governor will use only 3 different frequencies, idle, UI and max
 
+config CPU_FREQ_DEFAULT_GOV_BIOSHOCK
+				bool "bioshock"
+				select CPU_FREQ_GOV_BIOSHOCK
+				help
+				Use bioshock as the default CPU governor.
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -272,6 +278,12 @@ config CPU_FREQ_GOV_SMARTMAX
         select CPU_FREQ_TABLE
         help
           'smartmax' combined ondemand and smartass2
+
+config CPU_FREQ_GOV_BIOSHOCK
+				tristate "'bioshock' cpufreq governor"
+				depends on CPU_FREQ
+				help
+				'bioshock' CPU governor.
 
 config CPU_FREQ_GOV_INTELLIMM
         tristate "'intelliminmax' cpufreq policy governor"
