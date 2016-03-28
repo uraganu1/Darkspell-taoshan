@@ -1,6 +1,6 @@
 #!/bin/bash
 rm -rf XKernel-Flasher
-git clone https://github.com/Sudokamikaze/XKernel-Flasher.git && cd XKernel-Flasher
+git clone https://github.com/Sudokamikaze/XKernel-Flasher-taoshan.git && cd XKernel-Flasher-taoshan
 cp ../arch/arm/boot/zImage tools/
 cp ../drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
 eval $(grep CONFIG_LOCALVERSION= ../arch/arm/configs/pulshen_taoshan_defconfig)
@@ -34,6 +34,6 @@ mv XKernel-Stable.zip signer/
 echo Signing zip file
 cd signer && java -jar signapk.jar testkey.x509.pem testkey.pk8 XKernel-Stable.zip XKernel-Stable-signed.zip
 echo Done!
-echo You may grab your zip file in XKernel-Flasher directory
+echo You may grab your zip file in XKernel-Flasher-taoshan directory
 rm XKernel-Stable.zip
 mv XKernel-Stable-signed.zip ../
