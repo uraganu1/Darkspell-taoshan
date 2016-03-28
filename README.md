@@ -10,6 +10,8 @@ Smartsmart governor configured for optimized to battery saving
 
 SmartassV2 governor
 
+Bioshock governor
+
 Lulzactive governor
 
 inid.d
