@@ -14,7 +14,7 @@
 #
 #
 #!/bin/bash
-rm -rf XKernel-Flasher
+rm -rf XKernel-Flasher-taoshan
 git clone https://github.com/Sudokamikaze/XKernel-Flasher-taoshan.git && cd XKernel-Flasher-taoshan
 cp ../arch/arm/boot/zImage tools/
 cp ../drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
