@@ -4,3 +4,4 @@ rm -rf $KERNEL_DIR/ramdisk.cpio
 rm -rf $KERNEL_DIR/root.fs
 rm -rf $KERNEL_DIR/boot.img
 rm -rf XKernel-Flasher-taoshan
+rm -rf ramdisk_editor
