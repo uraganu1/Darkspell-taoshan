@@ -19,11 +19,12 @@ echo "Do you want to backup original files? [Y/N]: "
 read backup
 case "$backup" in
   y|Y) echo "Stating backup process"
-  tar -cf backup_ramdisk.tar sbin/ 
+  tar -cf backup_ramdisk.tar sbin/
   ;;
   n|N)
   ;;
 esac
+cd ../
 echo ==================================================
 echo 1 Unpack ramdisk and ramdisk-recovery
 echo 2 Pack newly edited ramdisk and ramdisk-recovery
@@ -33,15 +34,16 @@ echo -n "Choose an action: "
 read item
 case "$item" in
   1) echo "Unpacking ramdisk.cpio and ramdisk-recovery.cpio"
-  mkdir ../ramdisk_editor
-  cp ramdisk.cpio ../ramdisk_editor
-  cp ramdisk-recovery.cpio ../ramdisk_editor && cd ../ramdisk-editor
-  mkdir ramdisk_cpio && mv ramdisk.cpio ramdisk_cpio/ && cat ramdisk.cpio | cpio -idmv && rm ramdisk_cpio/ramdisk.cpio
-  mkdir ramdisk-recovery_cpio && mv ramdisk-recovery.cpio ramdisk-recovery_cpio/ && cat ramdisk-recovery.cpio | cpio -idmv && rm ramdisk-recovery_cpio/ramdisk-recovery.cpio
+  mkdir ramdisk_editor
+  cp ramdisk/sbin/ramdisk.cpio ramdisk_editor/
+  cp ramdisk/sbin/ramdisk-recovery.cpio ramdisk_editor/
+  cd ramdisk_editor/
+  mkdir ramdisk_cpio && mv ramdisk.cpio ramdisk_cpio/ && cd ramdisk_cpio && cat ramdisk.cpio | cpio -idmv && rm ramdisk.cpio && cd ../
+  mkdir ramdisk-recovery_cpio && mv ramdisk-recovery.cpio ramdisk-recovery_cpio/ && cd ramdisk-recovery_cpio && cat ramdisk-recovery.cpio | cpio -idmv && rm ramdisk-recovery.cpio
   echo "Done! Your ramdisk unpacked, check ramdisk-editor dir"
   ;;
   2) echo "Preparing to pack new ramdisk"
-  cd ../ramdisk_editor
+  cd ramdisk_editor
   cd ramdisk_cpio && find . | cpio -o -H newc > ../ramdisk-new.cpio
   cd ramdisk-recovery_cpio && find . | cpio -o -H newc > ../ramdisk-recovery-new.cpio
   echo "Done! Your ramdisk packed, check ramdisk-editor dir"
