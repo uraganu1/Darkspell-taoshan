@@ -87,3 +87,4 @@ GTAGS
 /XKernel-Flasher
 /modules_dir
 /ramdisk_editor
+ramdisk/backup_ramdisk.tar
