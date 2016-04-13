@@ -1597,6 +1597,14 @@ config PM8921_CHARGER_CONTROL
 	help
 		Exposes sysfs controls for various charging currents
 
+config BRICKED_HOTPLUG
+	 bool "Enable kernel based mpdecision"
+	 depends on MSM_RUN_QUEUE_STATS
+	  default n
+    help
+	  This enables kernel based multi core control.
+	  (up/down hotplug based on load)
+
 config MSM_AVS_HW
 	bool "Enable Adaptive Voltage Scaling (AVS)"
 	default n
@@ -2615,13 +2623,12 @@ config MSM_USE_USER_ACCESSIBLE_TIMERS
 			  The MSM hotplug driver controls on-/offlining of additional cores based
 			  on current cpu load.
 
-config BRICKED_HOTPLUG
-		bool "Enable kernel based mpdecision"
-		depends on MSM_RUN_QUEUE_STATS
-		default n
+config MSM_HOTPLUG
+		bool "MSM hotplug driver"
+		depends on HOTPLUG_CPU
+		default y
 		help
-		This enables kernel based multi core control.
-		(up/down hotplug based on load)
-
+		The MSM hotplug driver controls on-/offlining of additional cores based
+		on current cpu load.
 
 endif
