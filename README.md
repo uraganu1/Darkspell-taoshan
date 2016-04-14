@@ -2,17 +2,13 @@
 Thunderzap based kernel for Sony Xperia L(Taoshan) Only for Lollipop 5.1
 
 ### Features
-ZEN I/O
+I/O schedulers: ZEN/SIOPlus
 
-SIOPlus I/O
+Governors: Smartmax(configured for optimized battery saving)/SmartAssV2/Bioshock/Lulzactive
 
-Smartsmart governor configured for optimized to battery saving
+CPU Hotplug drivers: msm_hotplug/bricked hotplug
 
-SmartassV2 governor
-
-Bioshock governor
-
-Lulzactive governor
+Script for managing thundersonic sound engine from CLI
 
 inid.d
 
