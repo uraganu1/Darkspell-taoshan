@@ -13,3 +13,9 @@ Script for managing thundersonic sound engine from CLI
 inid.d
 
 And small bugfixes
+
+### How-to
+
+To use cli headphone boost configurator u may need to download a "Terminal emulator" from google play
+
+then u just write `xkernel` and follow the instructions, but put your headphones to phone and play music then you hear the effect
