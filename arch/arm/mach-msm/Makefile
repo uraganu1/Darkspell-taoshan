@@ -397,3 +397,5 @@ obj-$(CONFIG_ARCH_RANDOM) += early_random.o
 obj-$(CONFIG_MSM_HOTPLUG) += msm_hotplug.o
 
 obj-$(CONFIG_FORCE_FAST_CHARGE) += fastchg.o
+
+obj-$(CONFIG_ALUCARD_HOTPLUG) += alucard_hotplug.o
