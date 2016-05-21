@@ -1,12 +1,12 @@
 # XKernel
-Thunderzap based kernel for Sony Xperia L(Taoshan) Only for Lollipop 5.1
+Thunderzap based kernel for Sony Xperia L(Taoshan) Only for Lollipop 5.1(May work on kitkat but not tested)
 
 ### Features
-I/O schedulers: ZEN/SIOPlus
+I/O schedulers: ZEN(DEFAULT)/SIOPlus/SIO/DEADLINE/V(R)/BFQ
 
 Governors: Smartmax(configured for optimized battery saving)/SmartAssV2/Bioshock/Lulzactive
 
-CPU Hotplug drivers: msm_hotplug/bricked hotplug
+Custom CPU Hotplug drivers: msm_hotplug/alucard hotplug
 
 Script for managing thundersonic sound engine from CLI
 
