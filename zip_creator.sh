@@ -19,7 +19,7 @@ git clone https://github.com/Sudokamikaze/XKernel-Flasher-taoshan.git && cd XKer
 cp ../arch/arm/boot/zImage tools/
 cp ../drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
 eval $(grep CONFIG_LOCALVERSION= ../arch/arm/configs/pulshen_taoshan_defconfig)
-DATE=$(date +%d-%m-%Y)
+DATE=$(date +%Y-%m-%d:%H:%M:%S)
 echo Welcome to XKernel flash zip creator
 echo =================================================
 echo "Default preset have: "
