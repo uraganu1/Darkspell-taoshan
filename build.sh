@@ -28,6 +28,7 @@ export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER="Pulshen"
 export KBUILD_BUILD_HOST="QUVNTNM"
+DATE=$(date +%Y-%m-%d:%H:%M:%S)
 if [ -a $KERNEL_DIR/arch/arm/boot/zImage ];
 then
 rm $ZIMAGE
@@ -47,7 +48,7 @@ case "$menu" in
   echo -n "Choose an action: "
   read option
   if [ $option == 1 ]; then make pulshen_taoshan_defconfig; make -j5
-elif [ $option == 2]; then pulshen_taoshan_defconfig; make -j5; poweroff
+elif [ $option == 2 ]; then pulshen_taoshan_defconfig; make -j5; poweroff
   else
     echo "Unknown symbol"
   fi
