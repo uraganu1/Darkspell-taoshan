@@ -1407,7 +1407,7 @@ static int adreno_of_get_pdata(struct platform_device *pdev)
 	/* Default value is 83, if not found in DT */
 	if (adreno_of_read_property(pdev->dev.of_node, "qcom,idle-timeout",
 		&pdata->idle_timeout))
-		pdata->idle_timeout = 83;
+		pdata->idle_timeout = 80;
 
 	if (adreno_of_read_property(pdev->dev.of_node, "qcom,nap-allowed",
 		&pdata->nap_allowed))
@@ -2143,7 +2143,7 @@ _adreno_ft_restart_device(struct kgsl_device *device,
 		KGSL_FT_ERR(device, "Device stop failed\n");
 		return 1;
 	}
-	
+
 	if (adreno_init(device)) {
 		KGSL_FT_ERR(device, "Device start failed\n");
 		return 1;
