@@ -1588,7 +1588,7 @@ config MSM_CPU_FREQ_MIN
 	default 245760
 
 endif # CPU_FREQ_MSM
-		
+
 config PM8921_CHARGER_CONTROL
 	bool "Charger current control driver for PM8921 type hardware"
 	default n
@@ -2604,9 +2604,15 @@ config MSM_USE_USER_ACCESSIBLE_TIMERS
 	  memory page containing the cycle counter.
 
 config HAS_MACH_MEMUTILS
-	default n
+	default y
 	bool "Motorola MSM memcpy enhancements"
 	help
 	Faster memcpy performance for Krait
+
+config ALUCARD_HOTPLUG
+	bool "Enable alucard-hotplug cpu hotplug driver"
+	default y
+	help
+	Generic Alucard-hotplug cpu hotplug driver for ARM SOCs
 
 endif
