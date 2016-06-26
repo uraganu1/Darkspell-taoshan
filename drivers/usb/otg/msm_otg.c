@@ -43,10 +43,6 @@
 #include <linux/mhl_8334.h>
 #include <linux/slimport.h>
 
-#ifdef CONFIG_PM8921_CHARGER_CONTROL
-#include <linux/pm8921_chg_ctrl.h>
-int curr_target;
-#endif
 
 #include <asm/mach-types.h>
 
@@ -55,6 +51,11 @@ int curr_target;
 #include <mach/msm_xo.h>
 #include <mach/msm_bus.h>
 #include <mach/rpm-regulator.h>
+
+#ifdef CONFIG_FORCE_FAST_CHARGE
+#include <linux/fastchg.h>
+#define USB_FASTCHG_LOAD 1000 /* uA */
+#endif
 
 #define MSM_USB_BASE	(motg->regs)
 #define DRIVER_NAME	"msm_otg"
@@ -1151,87 +1152,32 @@ static void msm_otg_notify_charger(struct msm_otg *motg, unsigned mA)
 
 	if (motg->cur_power == mA)
 		return;
-	#ifdef CONFIG_PM8921_CHARGER_CONTROL
-	if(mswitch==1)
-	{
-	if(mA==0)
-	{
-	dev_info(motg->phy.dev, "No current: Assuming charger removed\n");
-	}
-	else
-	dev_info(motg->phy.dev, "Avail curr from USB = %u But using custom current = %d\n", mA, usb_curr_val);
-	dev_info(motg->phy.dev, "Current charger type = %d", motg->chg_type);
-	}
-	else
-	{
+
 	dev_info(motg->phy.dev, "Avail curr from USB = %u\n", mA);
-	}
-	#else
-	dev_info(motg->phy.dev, "Avail curr from USB = %u\n", mA);
-	#endif
-	
-	
+
+#ifdef CONFIG_FORCE_FAST_CHARGE
+ if (force_fast_charge == 1) {
+ if (mA >= USB_FASTCHG_LOAD){
+ pr_info("Available current already greater than USB fastcharging current!!!\n");
+ pr_info("Override of USB charging current cancelled.\n");
+ } else {
+ mA = USB_FASTCHG_LOAD;
+ pr_info("USB fast charging is ON!!!\n");
+ }
+ dev_info(motg->phy.dev, "Avail curr from USB = %u\n", mA);
+ } else {
+ pr_info("USB fast charging is OFF.\n");
+}
+#endif
 
 	/*
 	 *  Use Power Supply API if supported, otherwise fallback
 	 *  to legacy pm8921 API.
 	 */
-#ifdef CONFIG_PM8921_CHARGER_CONTROL
-if(mswitch==1)
-{
-	if(mA==0)
-	{
 	if (msm_otg_notify_power_supply(motg, mA))
 		pm8921_charger_vbus_draw(mA);
-	}
-	else
-	{
-	if(motg->chg_type == SUPPLY_TYPE_USB)
-	{
-	curr_target = usb_curr_val;
-	}
-	else if(motg->chg_type == SUPPLY_TYPE_AC) //AC
-	{
-	curr_target=ac_curr_val;
-	}
-	else
-	{
-	curr_target=mA; // Use default value if none of the chargers match
-	}
-	if (msm_otg_notify_power_supply(motg, mA))
-	pm8921_charger_vbus_draw(curr_target);
-	}
-}
-else
-{
-	if (msm_otg_notify_power_supply(motg, mA))
-		pm8921_charger_vbus_draw(mA);
-}
-#endif
-		
-#ifdef CONFIG_PM8921_CHARGER_CONTROL
-if(mswitch==1)
-{
-	reg_curr = motg->cur_power;
-	if(mA==0)
-	motg->cur_power = 0;
-	else
-	{
-	if(motg->chg_type == SUPPLY_TYPE_USB)
-	motg->cur_power = usb_curr_val;
-	else if(motg->chg_type == SUPPLY_TYPE_AC)
-	motg->cur_power = ac_curr_val;
-	else
+
 	motg->cur_power = mA;
-	}
-}
-else
-{
-motg->cur_power = mA;
-}
-#else
-	motg->cur_power = mA;
-#endif	
 }
 
 static int msm_otg_set_power(struct usb_phy *phy, unsigned mA)
@@ -2145,9 +2091,6 @@ static void msm_ta_detect_work(struct work_struct *w)
 		motg->chg_state = USB_CHG_STATE_DETECTED;
 		motg->chg_type = USB_DCP_CHARGER;
 		motg->cur_power = 0;
-#ifdef CONFIG_PM8921_CHARGER_CONTROL
-		reg_curr = motg->cur_power;
-#endif
 		msm_otg_start_peripheral(otg, 0);
 		otg->phy->state = OTG_STATE_B_IDLE;
 		schedule_work(&motg->sm_work);
