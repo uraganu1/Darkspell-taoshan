@@ -14,13 +14,14 @@
  #
  #
 #!/bin/bash
+DIR=$(pwd)
 export CROSS_COMPILE="/home/kitt/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-"
 STRIP="/home/kitt/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-strip"
-MODULES_DIR="/home/kitt/Git/XKernel-taoshan/modules_dir"
-ZIMAGE="/home/kitt/Git/XKernel-taoshan/arch/arm/boot/zImage"
-KERNEL_DIR="/home/kitt/Git/XKernel-taoshan/"
-MKBOOTIMG="/home/kitt/Git/XKernel-taoshan/tools/mkbootimg"
-MKBOOTFS="/home/kitt/Git/XKernel-taoshan/tools/mkbootfs"
+MODULES_DIR="$DIR/modules_dir"
+ZIMAGE="$DIR/arch/arm/boot/zImage"
+KERNEL_DIR="$DIR"
+MKBOOTIMG="$DIR/tools/mkbootimg"
+MKBOOTFS="$DIR/tools/mkbootfs"
 BUILD_START=$(date +"%s")
 export ARCH=arm
 export SUBARCH=arm
@@ -72,10 +73,10 @@ echo "Stripping modules for size"
 $STRIP --strip-unneeded *.ko
 zip -9 modules *
 cd $KERNEL_DIR
-# echo "Creating boot image"
-# $MKBOOTFS ramdisk/ > $KERNEL_DIR/ramdisk.cpio
-# cat $KERNEL_DIR/ramdisk.cpio | gzip > $KERNEL_DIR/root.fs
-# $MKBOOTIMG --kernel $ZIMAGE --ramdisk $KERNEL_DIR/root.fs --cmdline "console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.selinux=permissive user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2" --base 0x80200000 --pagesize 2048 --ramdisk_offset 0x02000000 -o $KERNEL_DIR/boot.img
+echo "Creating boot image"
+$MKBOOTFS ramdisk/ > $KERNEL_DIR/ramdisk.cpio
+cat $KERNEL_DIR/ramdisk.cpio | gzip > $KERNEL_DIR/root.fs
+$MKBOOTIMG --kernel $ZIMAGE --ramdisk $KERNEL_DIR/root.fs --cmdline "console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.selinux=permissive user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2" --base 0x80200000 --pagesize 2048 --ramdisk_offset 0x02000000 -o $KERNEL_DIR/boot.img
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
 echo "Build completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
