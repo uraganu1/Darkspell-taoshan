@@ -54,11 +54,11 @@ elif [ $option == 2 ]; then pulshen_taoshan_defconfig; make -j5; poweroff
   ;;
   2)
   touch compile-debug-$DATE.log
-  echo Makepkg command output will be logged to this file >> compile-debug-*.log
-  echo ================================================== >> compile-debug-*.log
+  echo Build process output will be logged to this file >> compile-debug-$DATE.log
+  echo ================================================== >> compile-debug-$DATE.log
   make pulshen_taoshan_defconfig
-  make -j5 | tee -a compile-debug-*.log
-  echo LOG FILE ENDED >> compile-debug-*.log
+  make -j5 | tee -a compile-debug-$DATE.log
+  echo LOG FILE ENDED >> compile-debug-$DATE.log
   ;;
   *) echo Unknown symbol
   ;;
