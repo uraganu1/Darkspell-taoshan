@@ -84,9 +84,6 @@ extern int tegra_input_boost (struct cpufreq_policy *policy,
  * Intel systems.
  * Mike Chan (androidlcom) calis this is also not true for ARM.
  */
-#define DEFAULT_IO_IS_BUSY 0
-#define DEFAULT_IGNORE_NICE 1
-#endif
 
 static unsigned int suspend_ideal_freq;
 static unsigned int awake_ideal_freq;
