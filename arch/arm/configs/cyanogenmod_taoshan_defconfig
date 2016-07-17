@@ -3479,6 +3479,8 @@ CONFIG_RTC_DRV_PM8XXX=y
 #
 # Microsoft Hyper-V guest support
 #
+CONFIG_UIO=y
+CONFIG_UIO_MSM_SHAREDMEM=y
 CONFIG_STAGING=y
 # CONFIG_ET131X is not set
 # CONFIG_USBIP_CORE is not set
