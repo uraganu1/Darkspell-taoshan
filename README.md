@@ -6,9 +6,13 @@ I/O schedulers: ZEN(DEFAULT)/SIOPlus/SIO
 
 Governors: Smartmax(configured for optimized battery saving)/Bioshock
 
-Custom CPU Hotplug drivers: currently only mpdecision
+Custom CPU Hotplug drivers: Intelliplug/Alucard
 
 Script for managing thundersonic sound engine from CLI
+
+ZRAM/ZSWAP/FRONTSWAP
+
+ZRAM Size configured to 250M
 
 inid.d
 
