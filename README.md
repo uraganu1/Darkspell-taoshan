@@ -14,6 +14,8 @@ ZRAM/ZSWAP/FRONTSWAP
 
 ZRAM Size configured to 250M
 
+EXT4 Tweaked
+
 inid.d
 
 And small bugfixes
