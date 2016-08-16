@@ -25,7 +25,7 @@ MKBOOTFS="$DIR/tools/mkbootfs"
 BUILD_START=$(date +"%s")
 export ARCH=arm
 export SUBARCH=arm
-export KBUILD_BUILD_USER="Pulshen"
+export KBUILD_BUILD_USER="Sudokamikaze"
 export KBUILD_BUILD_HOST="QUVNTNM"
 DATE=$(date +%Y-%m-%d:%H:%M:%S)
 if [ -a $KERNEL_DIR/arch/arm/boot/zImage ];
@@ -33,36 +33,8 @@ then
 rm $ZIMAGE
 rm $MODULES_DIR/*
 fi
-echo =============================
-echo "1. Build"
-echo "2. Build and log to file"
-echo =============================
-echo -n "Choose an action: "
-read menu
-case "$menu" in
-  1)  echo ==============================
-  echo "1. Just build"
-  echo "2. Build and shutdown"
-  echo ==============================
-  echo -n "Choose an option: "
-  read option
-  if [ $option == 1 ]; then make pulshen_taoshan_defconfig; make -j5
-elif [ $option == 2 ]; then pulshen_taoshan_defconfig; make -j5; poweroff
-  else
-    echo "Unknown symbol"
-  fi
-  ;;
-  2)
-  touch compile-debug-$DATE.log
-  echo Makepkg command output will be logged to this file >> compile-debug-*.log
-  echo ================================================== >> compile-debug-*.log
-  make pulshen_taoshan_defconfig
-  make -j5 | tee -a compile-debug-*.log
-  echo LOG FILE ENDED >> compile-debug-*.log
-  ;;
-  *) echo Unknown symbol
-  ;;
-esac
+make pulshen_taoshan_defconfig
+make -j5
 if [ -a $ZIMAGE ];
 then
 echo "Copying modules"
