@@ -15,8 +15,8 @@
  #
 #!/bin/bash
 DIR=$(pwd)
-export CROSS_COMPILE="/home/kitt/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-"
-STRIP="/home/kitt/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-strip"
+export CROSS_COMPILE="$HOME/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-"
+STRIP="$HOME/Git/toolchains/4.9.3-2014.12.20141230.CR83/bin/arm-eabi-strip"
 MODULES_DIR="$DIR/modules_dir"
 ZIMAGE="$DIR/arch/arm/boot/zImage"
 KERNEL_DIR="$DIR"
