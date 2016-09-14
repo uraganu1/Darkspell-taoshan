@@ -42,8 +42,8 @@
  * It helps to keep variable names smaller, simpler
  */
 
-#define DEF_FREQUENCY_UP_THRESHOLD		(70)
-#define DEF_FREQUENCY_DOWN_THRESHOLD		(30)
+#define DEF_FREQUENCY_UP_THRESHOLD		(90)
+#define DEF_FREQUENCY_DOWN_THRESHOLD		(80)
 
 /*
  * The polling frequency of this governor depends on the capability of
@@ -588,6 +588,3 @@ MODULE_LICENSE("GPL");
 
 fs_initcall(cpufreq_gov_dbs_init);
 module_exit(cpufreq_gov_dbs_exit);
-
-
-
