@@ -37,4 +37,4 @@ cd signer && java -jar signapk.jar testkey.x509.pem testkey.pk8 XKernel-Stable.z
 echo Done!
 echo You may grab your zip file in XKernel-Flasher-taoshan directory
 rm XKernel-Stable.zip
-mv XKernel-Stable-signed.zip ../Taoshan-LP-$CONFIG_LOCALVERSION-$DATE.zip
+mv XKernel-Stable-signed.zip ../Taoshan-LP$CONFIG_LOCALVERSION-$DATE.zip
