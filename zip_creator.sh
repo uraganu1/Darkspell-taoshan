@@ -25,6 +25,15 @@ mv XKernel-Stable.zip signer/
 echo Signing zip file
 cd signer && java -jar signapk.jar testkey.x509.pem testkey.pk8 XKernel-Stable.zip XKernel-Stable-signed.zip
 echo Done!
-echo You may grab your zip file in XKernel-Flasher-taoshan directory
 rm XKernel-Stable.zip
 mv XKernel-Stable-signed.zip ../Taoshan-LP$CONFIG_LOCALVERSION-$DATE.zip
+cd ..
+echo -n "Do you wan't to push zip to sdcard? [Y/N]: "
+read push
+case "$push" in
+  y|Y) adb shell mkdir /storage/sdcard1/XKernel
+  adb push Taoshan-LP$CONFIG_LOCALVERSION-*.zip /storage/sdcard1/XKernel/
+  ;;
+  n|N) echo You may grab your zip file in XKernel-Flasher-taoshan directory
+  ;;
+esac
