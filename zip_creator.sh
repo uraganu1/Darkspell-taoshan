@@ -20,16 +20,6 @@ cp ../arch/arm/boot/zImage tools/
 cp ../drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
 eval $(grep CONFIG_LOCALVERSION= ../arch/arm/configs/pulshen_taoshan_defconfig)
 DATE=$(date +%d-%m-%Y)
-echo Welcome to XKernel flash zip creator
-echo =================================================
-echo "Default preset have: "
-echo "zSwap = 10%"
-echo "Zen I/O sched"
-echo "Undervolted GPU"
-echo "Normal thermald configuration"
-echo ==================================================
-echo "U may tune kernel perfs by using Kernel Adiutor"
-echo ==================================================
 zip XKernel-Stable.zip -r META-INF presets system tools
 mv XKernel-Stable.zip signer/
 echo Signing zip file
