@@ -14,26 +14,26 @@
 #
 #
 #!/bin/bash
-rm -rf XKernel-Flasher-taoshan
-git clone https://github.com/Sudokamikaze/XKernel-Flasher-taoshan.git && cd XKernel-Flasher-taoshan
+rm -rf Darkspell-Flasher-taoshan
+git clone https://github.com/Sudokamikaze/Darkspell-Flasher-taoshan.git && cd Darkspell-Flasher-taoshan
 cp ../arch/arm/boot/zImage tools/
 cp ../drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
 eval $(grep CONFIG_LOCALVERSION= ../arch/arm/configs/pulshen_taoshan_defconfig)
 DATE=$(date +%d-%m-%Y)
-zip XKernel-Stable.zip -r META-INF presets system tools
-mv XKernel-Stable.zip signer/
+zip Darkspell-Stable.zip -r META-INF presets system tools
+mv Darkspell-Stable.zip signer/
 echo Signing zip file
-cd signer && java -jar signapk.jar testkey.x509.pem testkey.pk8 XKernel-Stable.zip XKernel-Stable-signed.zip
+cd signer && java -jar signapk.jar testkey.x509.pem testkey.pk8 Darkspell-Stable.zip Darkspell-Stable-signed.zip
 echo Done!
-rm XKernel-Stable.zip
-mv XKernel-Stable-signed.zip ../Taoshan-LP$CONFIG_LOCALVERSION-$DATE.zip
+rm Darkspell-Stable.zip
+mv Darkspell-Stable-signed.zip ../Taoshan-LP$CONFIG_LOCALVERSION-$DATE.zip
 cd ..
 echo -n "Do you wan't to push zip to sdcard? [Y/N]: "
 read push
 case "$push" in
-  y|Y) adb shell mkdir /storage/sdcard1/XKernel
-  adb push Taoshan-LP$CONFIG_LOCALVERSION-*.zip /storage/sdcard1/XKernel/
+  y|Y) adb shell mkdir /storage/sdcard1/Darkspell
+  adb push Taoshan-LP$CONFIG_LOCALVERSION-*.zip /storage/sdcard1/Darkspell/
   ;;
-  n|N) echo You may grab your zip file in XKernel-Flasher-taoshan directory
+  n|N) echo You may grab your zip file in Darkspell-Flasher-taoshan directory
   ;;
 esac
