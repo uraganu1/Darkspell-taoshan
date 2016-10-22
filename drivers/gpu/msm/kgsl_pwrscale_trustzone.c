@@ -8,7 +8,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * Modified by Paul Reioux (Faux123)
  * 2013-06-20: Added KGSL Simple GPU Governor
  *
@@ -107,7 +107,7 @@ static ssize_t tz_governor_store(struct kgsl_device *device,
 	if (!strncmp(buf, "ondemand", 8))
 		priv->governor = TZ_GOVERNOR_ONDEMAND;
 #ifdef CONFIG_MSM_KGSL_SIMPLE_GOV
-	else if (!strncmp(str, "simple", 6))
+	else if (!strncmp(buf, "simple", 6))
 		priv->governor = TZ_GOVERNOR_SIMPLE;
 #endif
 	else if (!strncmp(buf, "performance", 11))
@@ -171,19 +171,19 @@ static int simple_governor(struct kgsl_device *device, int idle_stat)
 		counter = 0;
 
 	/* it's currently busy */
-	if (total < ramp_up_threshold) 
+	if (total < ramp_up_threshold)
 	{
 		if ((pwr->active_pwrlevel > 0) &&
 			(pwr->active_pwrlevel <= (pwr->num_pwrlevels - 1)))
 			/* bump up to next pwrlevel */
-			return -1; 
-	} 
+			return -1;
+	}
 	/* idle case */
-	else 
+	else
 	{
 		if ((pwr->active_pwrlevel >= 0) &&
 			(pwr->active_pwrlevel < (pwr->num_pwrlevels - 1)))
-			return 1; 	 
+			return 1;
 	}
 
 	return 0;
@@ -279,7 +279,7 @@ static int tz_init(struct kgsl_device *device, struct kgsl_pwrscale *pwrscale)
 	if (pwrscale->priv == NULL)
 		return -ENOMEM;
 
-	priv->governor = TZ_GOVERNOR_SIMPLE;
+	priv->governor = TZ_GOVERNOR_ONDEMAND;
 	spin_lock_init(&tz_lock);
 	kgsl_pwrscale_policy_add_files(device, pwrscale, &tz_attr_group);
 
