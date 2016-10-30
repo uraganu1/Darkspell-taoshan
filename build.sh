@@ -15,8 +15,8 @@
  #
 #!/bin/bash
 DIR=$(pwd)
-export CROSS_COMPILE="$HOME/Git/toolchains/architoolchain-4.9/bin/arm-eabi-"
-STRIP="$HOME/Git/toolchains/architoolchain-4.9/bin/arm-gnueabi-strip"
+export CROSS_COMPILE="$HOME/Git/toolchains/architoolchain-4.8-a15/bin/arm-eabi-"
+STRIP="$HOME/Git/toolchains/architoolchain-4.8-a15/bin/arm-eabi-strip"
 MODULES_DIR="$DIR/modules_dir"
 ZIMAGE="$DIR/arch/arm/boot/zImage"
 KERNEL_DIR="$DIR"
