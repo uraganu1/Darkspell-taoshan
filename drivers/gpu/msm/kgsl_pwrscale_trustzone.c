@@ -198,7 +198,8 @@ static int simple_governor(struct kgsl_device *device, int idle_stat)
 		if ((pwr->active_pwrlevel >= 0) &&
 			(pwr->active_pwrlevel < (pwr->num_pwrlevels - 1)))
 			return 1;
-		} else if (pwr->active_pwrlevel == (pwr->num_pwrlevels - 1))
+		}
+		else if (pwr->active_pwrlevel == (pwr->num_pwrlevels - 1))
 			/* already @ min, so do nothing */
 			return 0;
 	}
