@@ -187,7 +187,7 @@ static int simple_governor(struct kgsl_device *device, int idle_stat)
 	/* it's currently busy */
 	if (total < ramp_up_threshold)
 	{
-  if ((pwr->active_pwrlevel > 0) &&
+		if ((pwr->active_pwrlevel > 0) &&
 			(pwr->active_pwrlevel <= (pwr->num_pwrlevels - 1)))
 			/* bump up to next pwrlevel */
 			return -1;
@@ -198,10 +198,6 @@ static int simple_governor(struct kgsl_device *device, int idle_stat)
 		if ((pwr->active_pwrlevel >= 0) &&
 			(pwr->active_pwrlevel < (pwr->num_pwrlevels - 1)))
 			return 1;
-		}
-		else if (pwr->active_pwrlevel == (pwr->num_pwrlevels - 1))
-			/* already @ min, so do nothing */
-			return 0;
 	}
 
 	return 0;
@@ -258,6 +254,7 @@ static void tz_idle(struct kgsl_device *device, struct kgsl_pwrscale *pwrscale)
 			val = __secure_tz_entry3(TZ_UPDATE_ID,
 				pwr->active_pwrlevel,
 				priv->bin.total_time, priv->bin.busy_time);
+#endif
 	}
 
 	priv->bin.total_time = 0;
