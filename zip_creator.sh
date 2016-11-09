@@ -32,8 +32,8 @@ cd ..
 echo -n "Do you wan't to push zip to sdcard? [Y/N]: "
 read push
 case "$push" in
-  y|Y) adb shell mkdir /storage/sdcard1/Darkspell
-  adb push Taoshan-LP$CONFIG_LOCALVERSION-*.zip /storage/sdcard1/Darkspell/
+  y|Y) adb shell mkdir /storage/E53B-ACF6/Darkspell
+  adb push Taoshan-LP$CONFIG_LOCALVERSION-*.zip /storage/E53B-ACF6/Darkspell/
   ;;
   n|N) echo You may grab your zip file in Darkspell-Flasher-taoshan directory
   ;;
