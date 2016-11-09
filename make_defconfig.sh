@@ -6,7 +6,7 @@ make menuconfig
 make savedefconfig && cp defconfig arch/arm/configs/pulshen_taoshan_defconfig
 rm defconfig
 ITSME=$(git config user.name)
-echo "Do you wan't to commit? "
+echo -n "Do you wan't to commit? [Y/N]: "
 read douwant
 case "$douwant" in
   y|Y)
