@@ -25,7 +25,6 @@ mv Darkspell-Stable.zip signer/
 echo Signing zip file
 cd signer && java -jar signapk.jar testkey.x509.pem testkey.pk8 Darkspell-Stable.zip Darkspell-Stable-signed.zip
 echo Done!
-echo You may grab your zip file in Darkspell-Flasher-taoshan directory
 rm Darkspell-Stable.zip
 mv Darkspell-Stable-signed.zip ../Taoshan-MM$CONFIG_LOCALVERSION-$DATE.zip
 cd ..
