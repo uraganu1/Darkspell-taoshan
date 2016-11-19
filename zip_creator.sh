@@ -15,7 +15,7 @@
 #
 #!/bin/bash
 rm -rf Darkspell-Flasher-taoshan
-git clone https://github.com/Sudokamikaze/Darkspell-Flasher-taoshan.git && cd Darkspell-Flasher-taoshan
+git clone https://github.com/Sudokamikaze/Darkspell-Flasher-taoshan.git -b mm && cd Darkspell-Flasher-taoshan
 cp ../arch/arm/boot/zImage tools/
 cp ../drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini system/etc/firmware/wlan/prima/
 eval $(grep CONFIG_LOCALVERSION= ../arch/arm/configs/pulshen_taoshan_defconfig)
