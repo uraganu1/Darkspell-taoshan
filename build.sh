@@ -21,7 +21,6 @@ ONLYZIMAGE=true
 export CROSS_COMPILE="$HOME/Git/toolchains/architoolchain-4.8-a15/bin/arm-eabi-"
 DIR=$(pwd)
 STRIP="$HOME/Git/toolchains/architoolchain-4.8-a15/bin/arm-eabi-strip"
-MODULES_DIR="$DIR/modules_dir"
 ZIMAGE="$DIR/arch/arm/boot/zImage"
 KERNEL_DIR="$DIR"
 MKBOOTIMG="$DIR/tools/mkbootimg"
@@ -35,7 +34,6 @@ DATE=$(date +%Y-%m-%d:%H:%M:%S)
 if [ -a $KERNEL_DIR/arch/arm/boot/zImage ];
 then
 rm $ZIMAGE
-rm $MODULES_DIR/*
 fi
 make pulshen_taoshan_defconfig
 make -j5
