@@ -8,14 +8,8 @@
 #include <linux/types.h>
 #include <linux/cgroup.h>
 
-enum vmpressure_levels {
-	VMPRESSURE_LOW = 0,
-	VMPRESSURE_MEDIUM,
-	VMPRESSURE_CRITICAL,
-	VMPRESSURE_NUM_LEVELS,
-};
-
 struct vmpressure {
+<<<<<<< HEAD
 	 /*
 	 * The window size is the number of scanned pages before
 	 * we try to analyze scanned/reclaimed ratio. Using small window
@@ -38,10 +32,12 @@ struct vmpressure {
 	unsigned long window_size;
 	/* The number of windows we've seen each pressure level occur for */
 	unsigned int nr_windows[VMPRESSURE_NUM_LEVELS];
+=======
+>>>>>>> parent of 999ad48dc8e9...  mm: vmpressure: dynamic window sizing.
 	unsigned long scanned;
 	unsigned long reclaimed;
 	unsigned long stall;
-	/* The lock is used to keep the members above in sync. */
+	/* The lock is used to keep the scanned/reclaimed above in sync. */
 	struct spinlock sr_lock;
 
 	/* The list of vmpressure_event structs. */
@@ -61,12 +57,10 @@ extern void vmpressure(gfp_t gfp, struct mem_cgroup *memcg,
 extern void vmpressure_prio(gfp_t gfp, struct mem_cgroup *memcg, int prio);
 
 #ifdef CONFIG_CGROUP_MEM_RES_CTLR
-extern void vmpressure_init(struct vmpressure *vmpr, bool is_root);
+extern void vmpressure_init(struct vmpressure *vmpr);
 extern struct vmpressure *memcg_to_vmpressure(struct mem_cgroup *memcg);
 extern struct cgroup_subsys_state *vmpressure_to_css(struct vmpressure *vmpr);
 extern struct vmpressure *css_to_vmpressure(struct cgroup_subsys_state *css);
-extern void vmpressure_update_mem_limit(struct mem_cgroup *memcg,
-					unsigned long new_limit);
 extern int vmpressure_register_event(struct cgroup *cg, struct cftype *cft,
 				     struct eventfd_ctx *eventfd,
 				     const char *args);
