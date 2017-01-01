@@ -16,7 +16,7 @@ enum vmpressure_levels {
 };
 
 struct vmpressure {
-	+	/*
+	 /*
 	 * The window size is the number of scanned pages before
 	 * we try to analyze scanned/reclaimed ratio. Using small window
 	 * sizes can cause lot of false positives, but too big window size will
