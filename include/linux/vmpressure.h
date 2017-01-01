@@ -9,31 +9,6 @@
 #include <linux/cgroup.h>
 
 struct vmpressure {
-<<<<<<< HEAD
-	 /*
-	 * The window size is the number of scanned pages before
-	 * we try to analyze scanned/reclaimed ratio. Using small window
-	 * sizes can cause lot of false positives, but too big window size will
-	 * delay the notifications.
-	 *
-	 * In order to reduce the amount of false positives for low and medium
-	 * levels, those levels aren't reported until we've seen multiple
-	 * windows at those respective pressure levels. This makes sure
-	 * sure that we don't delay notifications when encountering critical
-	 * levels of memory pressure, but also don't spam userspace in case
-	 * nothing serious is going on. The number of windows seen at each
-	 * pressure level is kept in nr_windows below.
-	 *
-	 * For the root mem cgroup, the window size is computed based on the
-	 * total amount of pages available in the system. For non-root cgroups,
-	 * we compute the window size based on the hard memory limit, or if
-	 * that is not set, we fall back to the default window size.
-	 */
-	unsigned long window_size;
-	/* The number of windows we've seen each pressure level occur for */
-	unsigned int nr_windows[VMPRESSURE_NUM_LEVELS];
-=======
->>>>>>> parent of 999ad48dc8e9...  mm: vmpressure: dynamic window sizing.
 	unsigned long scanned;
 	unsigned long reclaimed;
 	unsigned long stall;
