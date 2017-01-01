@@ -372,7 +372,7 @@ KBUILD_CFLAGS   := -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Wno-format-security \
 			 -fno-delete-null-pointer-checks \
-			 -mcpu=cortex-a15 -mtune=cortex-a15 \
+			 -mcpu=cortex-a15 -mtune=cortex-a15 -mfpu=neon-vfpv4 \
 			 -Wno-maybe-uninitialized
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
