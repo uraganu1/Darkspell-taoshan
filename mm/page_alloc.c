@@ -1042,7 +1042,8 @@ static void change_pageblock_range(struct page *pageblock_page,
  * if it was unchanged).
  */
 static int try_to_steal_freepages(struct zone *zone, struct page *page,
-				  int start_type, int fallback_type)
+				   											int start_type, int fallback_type,
+				   											int start_order)
 {
 	int current_order = page_order(page);
 
@@ -1057,6 +1058,8 @@ static int try_to_steal_freepages(struct zone *zone, struct page *page,
 
 	if (current_order >= pageblock_order / 2 ||
 	    start_type == MIGRATE_RECLAIMABLE ||
+		  // allow unmovable allocs up to 64K without migrating blocks
+	    (start_type == MIGRATE_UNMOVABLE && start_order >= 5) ||
 	    page_group_by_mobility_disabled) {
 		int pages;
 
@@ -1104,8 +1107,8 @@ __rmqueue_fallback(struct zone *zone, unsigned int order, int start_migratetype)
 			area->nr_free--;
 
 			new_type = try_to_steal_freepages(zone, page,
-							  start_migratetype,
-							  migratetype);
+							  	start_migratetype,
+							  	migratetype, order);
 
 			/* Remove the page from the freelists */
 			list_del(&page->lru);
@@ -5380,11 +5383,11 @@ int __meminit init_per_zone_wmark_min(void)
 module_init(init_per_zone_wmark_min)
 
 /*
- * min_free_kbytes_sysctl_handler - just a wrapper around proc_dointvec() so 
+ * min_free_kbytes_sysctl_handler - just a wrapper around proc_dointvec() so
  *	that we can call two helper functions whenever min_free_kbytes
  *	or extra_free_kbytes changes.
  */
-int min_free_kbytes_sysctl_handler(ctl_table *table, int write, 
+int min_free_kbytes_sysctl_handler(ctl_table *table, int write,
 	void __user *buffer, size_t *length, loff_t *ppos)
 {
 	proc_dointvec(table, write, buffer, length, ppos);
