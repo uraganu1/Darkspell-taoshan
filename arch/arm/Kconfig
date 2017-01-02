@@ -1756,7 +1756,7 @@ config ARCH_NR_GPIO
 source kernel/Kconfig.preempt
 
 source kernel/Kconfig.hz
-	
+
 config SCHED_HRTICK
 	def_bool HIGH_RES_TIMERS
 
@@ -2444,7 +2444,7 @@ config NEON
 
 config KERNEL_MODE_NEON
 	bool "Support for NEON in kernel mode"
-	default n
+	default y
 	depends on NEON
 	help
 	  Say Y to include support for NEON in kernel mode.
