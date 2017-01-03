@@ -318,7 +318,6 @@ config WQ_POWER_EFFICIENT_DEFAULT
 	  lower power usage at the cost of small performance overhead.
 	  This config option determines whether workqueue.power_efficient
 	  is enabled by default.
-    If in doubt, say N.
 
 config PM_GENERIC_DOMAINS_RUNTIME
 	def_bool y
