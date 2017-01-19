@@ -85,5 +85,8 @@ GTAGS
 *~
 \#*#
 /XKernel-Flasher
-/ramdisk_editor
-ramdisk/backup_ramdisk.tar
+
+/build.sh
+/clean.sh
+/zip_creator.sh
+/make_defconfig.sh

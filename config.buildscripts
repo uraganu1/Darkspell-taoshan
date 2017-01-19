@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Do not execure this, and do not edit"
+exit 1
+
+DEVICE=taoshan
+BRANCH=master
+VER=LP
+CLEAN_TOOLCHAIN_PATH=Git/toolchains/4.8.3-2013.11.20131205
+TOOLCHAIN_PATH=Git/toolchains/architoolchain-4.9
