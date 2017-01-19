@@ -5,6 +5,7 @@ read choise
 case "$choise" in
   y|Y) git clone https://github.com/Sudokamikaze/Darkspell-scripts.git
   rm Darkspell-scripts/LICENSE
+  rm Darkspell-scripts/README.md
   mv Darkspell-scripts/* ./
   rm -rf Darkspell-scripts
   echo "Done! "
