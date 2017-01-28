@@ -137,6 +137,7 @@ obj-$(CONFIG_VIRT_DRIVERS)	+= virt/
 obj-$(CONFIG_HYPERV)		+= hv/
 
 obj-$(CONFIG_PM_DEVFREQ)	+= devfreq/
+obj-$(CONFIG_ANDROID)		+= android/
 
 #MobiCore
 obj-$(CONFIG_MOBICORE_SUPPORT)  += gud/
@@ -146,4 +147,3 @@ obj-$(CONFIG_ESOC)		+= esoc/
 
 #sensor_class
 obj-$(CONFIG_SENSORS)		+= sensors/
-
