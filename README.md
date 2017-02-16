@@ -1,21 +1,28 @@
-# XKernel
-Thunderzap based kernel for Sony Xperia L(Taoshan) Only for Lollipop 5.1/Marshmallow 6.0(May work on kitkat but not tested)
+```
+ ▄▀▀█▄▄   ▄▀▀█▄   ▄▀▀▄▀▀▀▄  ▄▀▀▄ █  ▄▀▀▀▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀▀▀▄    ▄▀▀▀▀▄     
+█ ▄▀   █ ▐ ▄▀ ▀▄ █   █   █ █  █ ▄▀ █ █   ▐ █   █   █ ▐  ▄▀   ▐ █    █    █    █      
+▐ █    █   █▄▄▄█ ▐  █▀▀█▀  ▐  █▀▄     ▀▄   ▐  █▀▀▀▀    █▄▄▄▄▄  ▐    █    ▐    █      
+  █    █  ▄▀   █  ▄▀    █    █   █ ▀▄   █     █        █    ▌      █         █       
+ ▄▀▄▄▄▄▀ █   ▄▀  █     █   ▄▀   █   █▀▀▀    ▄▀        ▄▀▄▄▄▄     ▄▀▄▄▄▄▄▄▀ ▄▀▄▄▄▄▄▄▀
+█     ▐  ▐   ▐   ▐     ▐   █    ▐   ▐      █          █    ▐     █         █         
+▐                          ▐               ▐          ▐          ▐         ▐         
 
-### Features
-I/O schedulers: ZEN(DEFAULT)/SIOPlus/SIO/DEADLINE/V(R)/BFQ
+```
 
-Governors: Smartmax(configured for optimized battery saving)/SmartAssV2/Bioshock/Lulzactive/Intelliactive/
+Based on old ThunderZap sources kernel, for long-live Xperia L(Taoshan)
 
-Custom CPU Hotplug drivers: msm_hotplug/alucard hotplug/intelli plug/
+This branch building for Lollipop
 
-Script for managing thundersonic sound engine from CLI
 
-inid.d/binfmt_misc/kexec-hardboot/
+### Spec-list
 
-And small bugfixes
-
-### How-to
-
-To use cli headphone boost configurator u may need to download a "Terminal emulator" from google play
-
-then u just write `xkernel` and follow the instructions, but put your headphones to phone and play music then you hear the effect
+```
+Bioshock governor by default
+Zen I/O sched
+binfmt_misc
+Intellihotplug
+LZ4 Compression
+Zram/Zswap
+Optimized AES/SHA NEON
+Hard-fload ABI
+```
