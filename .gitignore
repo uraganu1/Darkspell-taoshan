@@ -90,3 +90,4 @@ GTAGS
 /clean.sh
 /zip_creator.sh
 /make_defconfig.sh
+/modules_dir/modules.zip
