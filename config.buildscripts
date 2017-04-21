@@ -6,6 +6,6 @@ exit 1
 DEVICE=taoshan
 BRANCH=mm
 VER=MM
-CLEAN_TOOLCHAIN_PATH=Git/toolchains/clean-tc
-TOOLCHAIN_PATH=Git/toolchains/4.8_a15
+CLEAN_TOOLCHAIN_PATH="$HOME/Git/toolchains/clean-tc"
+TOOLCHAIN_PATH="$HOME/Git/toolchains/4.8_a15"
 ONLYZIMAGE=true
