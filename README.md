@@ -11,7 +11,7 @@
 
 Based on old ThunderZap sources kernel, for long-live Xperia L(Taoshan)
 
-This branch building for Marshmallow
+This branch building for Nougat 7.1.2
 
 
 ### Spec-list
